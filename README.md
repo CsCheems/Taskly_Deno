@@ -1,6 +1,6 @@
-# Backend de Tasky API 🦕
+# Backend con Deno 🦕
 
-Este es el servicio de backend para la aplicación **Tasky PWA**. Es una API RESTful construida con **Deno** y el framework **Oak**.
+Este es el servicio de backend para la aplicación **Taskly PWA**. Es una API RESTful construida con **Deno** y el framework **Oak**.
 
 Sus responsabilidades principales son:
 -   Servir los datos de las tareas.
@@ -28,15 +28,15 @@ Sus responsabilidades principales son:
 1.  **Clonar el Repositorio (si aplica):**
     Si estás empezando desde cero, clona el repositorio y navega a esta carpeta.
     ```bash
-    cd tasky-api
+    cd Taskly
     ```
 
 2.  **Generar Claves VAPID:**
-    Las notificaciones push requieren un par de claves VAPID (Voluntary Application Server Identification). Hemos incluido un script para generarlas. Ejecuta:
+    Las notificaciones push requieren un par de claves VAPID (Voluntary Application Server Identification). Ejecuta primero:
     ```bash
     deno run -A generate-vapid.ts
     ```
-    Este comando creará un archivo `vapid-keys.json` con tu clave pública y privada.
+    Este comando creará en consola la clave publica y privada copialas y pegalas en las variables correspondientes dentro de `main.ts`.
 
 3.  **Configurar las Claves en el Servidor:**
     Abre el archivo `main.ts` y asegúrate de que las constantes `VAPID_PUBLIC_KEY` y `VAPID_PRIVATE_KEY` estén correctamente configuradas. El script ya está preparado para leerlas desde el archivo `vapid-keys.json`, por lo que no deberías necesitar hacer cambios manuales.
