@@ -62,10 +62,15 @@ router.post("/api/send-notification", async (ctx) =>{
 
 const app = new Application();
 
-// Usamos CORS para permitir que nuestro frontend (en otro puerto) haga peticiones
-app.use(oakCors());
+app.use(
+  oakCors({
+    origin: "https://taskly-next.onrender.com",
+  } )
+);
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-console.log("🚀 Servidor Deno corriendo en http://localhost:8000" );
-await app.listen({ port: 8000 });
+const port = Deno.env.get("PORT") ? Number(Deno.env.get("PORT")) : 8000;
+console.log(`🚀 Servidor Deno corriendo en el puerto ${port}`);
+await app.listen({ port });
